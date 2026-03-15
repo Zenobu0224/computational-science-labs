@@ -59,6 +59,20 @@ total_no_eve = totalYN_col(df, df['Time'], "Evening", "No")        # 2
 
 
 
+# TEMPERATURE
+# Total Yes and No for the Cold    
+total_yes_cold = totalYN_col(df, df['Temperature'], "Cold", "Yes")        # 2
+total_no_cold = totalYN_col(df, df['Temperature'], "Cold", "No")          # 3
+
+# Total yes and No for the Hot
+total_yes_hot = totalYN_col(df, df['Temperature'], "Hot", "Yes")      # 3
+total_no_hot = totalYN_col(df, df['Temperature'], "Hot", "No")        # 0
+
+# Total yes and No for the Mild
+total_yes_mild = totalYN_col(df, df['Temperature'], "Mild", "Yes")      # 2
+total_no_mild = totalYN_col(df, df['Temperature'], "Mild", "No")        # 1
+
+
 
 
 print(df)
