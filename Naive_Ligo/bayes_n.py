@@ -74,6 +74,18 @@ total_no_mild = totalYN_col(df, df['Temperature'], "Mild", "No")        # 1
 
 
 
+# BODY ODOR
+# Total Yes and No for the Fresh    
+total_yes_fr = totalYN_col(df, df['Body Odor'], "Fresh", "Yes")        # 0
+total_no_fr = totalYN_col(df, df['Body Odor'], "Fresh", "No")          # 3
+
+# Total yes and No for the Smelly
+total_yes_sm = totalYN_col(df, df['Body Odor'], "Smelly", "Yes")      # 5
+total_no_sm = totalYN_col(df, df['Body Odor'], "Smelly", "No")        # 0
+
+# Total yes and No for the Neutral
+total_yes_neu = totalYN_col(df, df['Body Odor'], "Neutral", "Yes")      # 2
+total_no_neu = totalYN_col(df, df['Body Odor'], "Neutral", "No")        # 1
 
 print(df)
 # print("\n\n\n",total_yes_neu)
