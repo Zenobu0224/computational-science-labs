@@ -24,6 +24,8 @@ df = pd.read_csv("Naive_Ligo/maligo_data.csv")
 total_yes = total_YN(df['Maligo'], "Yes")       # 7
 total_no = total_YN(df['Maligo'], "No")         # 4
 
+
+# WEATHER
 # Total Yes and No for the Rainy
 total_yes_rainy = totalYN_col(df, df['Weather'], "Rainy", "Yes")        # 2
 total_no_rainy = totalYN_col(df, df['Weather'], "Rainy", "No")          # 2
@@ -37,6 +39,28 @@ total_yes_cloudy = totalYN_col(df, df['Weather'], "Cloudy", "Yes")      # 2
 total_no_cloudy = totalYN_col(df, df['Weather'], "Cloudy", "No")        # 1
 
 
+
+# TIME
+# Total Yes and No for the Morning
+total_yes_morn = totalYN_col(df, df['Time'], "Morning", "Yes")        # 2
+total_no_morn = totalYN_col(df, df['Time'], "Morning", "No")          # 1
+
+# Total Yes and No for the Noon    
+total_yes_noon = totalYN_col(df, df['Time'], "Noon", "Yes")        # 2
+total_no_noon = totalYN_col(df, df['Time'], "Noon", "No")          # 0
+
+# Total yes and No for the Afternoon
+total_yes_af = totalYN_col(df, df['Time'], "Afternoon", "Yes")      # 2
+total_no_af = totalYN_col(df, df['Time'], "Afternoon", "No")        # 1
+
+# Total yes and No for the Evening
+total_yes_eve = totalYN_col(df, df['Time'], "Evening", "Yes")      # 1
+total_no_eve = totalYN_col(df, df['Time'], "Evening", "No")        # 2
+
+
+
+
+
 print(df)
-print("\n\n\n", total_yes_cloudy)
-print(total_no_cloudy)
+# print("\n\n\n",total_yes_neu)
+# print(total_no_neu)
