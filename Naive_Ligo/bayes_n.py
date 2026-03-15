@@ -88,5 +88,13 @@ total_yes_neu = totalYN_col(df, df['Body Odor'], "Neutral", "Yes")      # 2
 total_no_neu = totalYN_col(df, df['Body Odor'], "Neutral", "No")        # 1
 
 print(df)
-# print("\n\n\n",total_yes_neu)
-# print(total_no_neu)
+
+
+# COMPUTATION
+# YES Rainy + Afternoon + hot + neu
+naive_bayes1 = (total_yes / (total_yes + total_no)) * ((total_yes_rainy/total_yes) + (total_yes_af/total_yes) + (total_yes_hot/total_yes) + (total_yes_neu/total_yes))
+print("\n\n\nAnswer YES : ",naive_bayes1)
+
+# NO Rainy + Afternoon + hot + neu
+naive_bayes2 = (total_no / (total_yes + total_no)) * ((total_no_rainy/total_no) + (total_no_af/total_no) + (total_no_hot/total_no) + (total_no_neu/total_no))
+print("Answer NO : ",naive_bayes2)
