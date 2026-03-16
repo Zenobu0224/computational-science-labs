@@ -51,5 +51,3 @@ $$P(\text{Decision} \mid \text{Features}) \propto P(\text{Decision}) \times \pro
 * **Negative Drivers:** "Fresh" body odor and "Cold" weather are the most common reasons for a **No** decision.
 
 ---
-
-**Would you like me to provide the updated Python code that implements the multiplication logic and Laplace smoothing to match this professional standard?**
