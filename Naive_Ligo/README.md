@@ -13,39 +13,54 @@ The model analyzes historical data to calculate the probability of a "Yes" or "N
 The classifier treats every feature (Weather, Time, Temperature, and Body Odor) as **independent**. To make a prediction, it calculates two main components:
 
 1. **Prior Probability:** The general likelihood of "Yes" or "No" in the entire dataset.
-* *Example:* $P(\text{Yes}) = \frac{\text{Total Yes}}{\text{Total Records}}$
+* $P(\text{Yes}) = \frac{\text{Total Yes}}{\text{Total Records}}$
 
 
 2. **Likelihood:** The probability of a specific condition (e.g., "Rainy") occurring given that the decision was "Yes."
-* *Example:* $P(\text{Rainy} \mid \text{Yes}) = \frac{\text{Count of Rainy Yes}}{\text{Total Yes}}$
+* $P(\text{Rainy} \mid \text{Yes}) = \frac{\text{Count of Rainy Yes}}{\text{Total Yes}}$
 
 
-
-### Dataset Features
-
-The model evaluates the following inputs to reach a conclusion:
-
-* **Weather:** Rainy, Sunny, Cloudy
-* **Time:** Morning, Noon, Afternoon, Evening
-* **Temperature:** Cold, Hot, Mild
-* **Body Odor:** Fresh, Smelly, Neutral
 
 ---
 
-### Technical Note: Multiplication vs. Addition
+### Dataset & Execution Example
 
-In a standard Naive Bayes implementation, individual probabilities are **multiplied**, not added. This is because we are looking for the joint probability of all conditions being true at the same time.
+The following data was used to train and test the model:
 
-**The Probability Formula:**
+#### Input Data:
 
+| ID | Weather | Time | Temperature | Body Odor | Maligo |
+| --- | --- | --- | --- | --- | --- |
+| 0 | Rainy | Morning | Cold | Fresh | No |
+| 1 | Sunny | Noon | Hot | Smelly | Yes |
+| 2 | Cloudy | Afternoon | Mild | Neutral | Yes |
+| 3 | Sunny | Morning | Hot | Smelly | Yes |
+| 4 | Rainy | Evening | Cold | Fresh | No |
+| 5 | Sunny | Afternoon | Hot | Smelly | Yes |
+| 6 | Cloudy | Morning | Mild | Neutral | Yes |
+| 7 | Rainy | Noon | Cold | Smelly | Yes |
+| 8 | Sunny | Evening | Mild | Fresh | No |
+| 9 | Cloudy | Afternoon | Cold | Neutral | No |
+| 10 | Rainy | Evening | Cold | Smelly | Yes |
 
-$$P(\text{Decision} \mid \text{Features}) \propto P(\text{Decision}) \times \prod P(\text{Feature}_i \mid \text{Decision})$$
+#### Model Prediction Output:
 
-> **Zero-Frequency Problem:** If a specific condition (like "Hot" for a "No" decision) never appears in the data, the probability becomes 0. In professional environments, we use **Laplace Smoothing** (adding 1 to all counts) to ensure the model remains functional even with missing combinations.
+For the scenario: **Rainy + Afternoon + Hot + Neutral**
+
+* **Probability (YES):** `0.8181818181818181`
+* **Probability (NO):** `0.36363636363636365`
+
+### Final Conclusion
+
+Since the probability for **YES** (0.818) is higher than the probability for **NO** (0.363), the model concludes that **the person will take a bath (Maligo)** under these circumstances.
 
 ---
 
-### Key Insights
+### Technical Note: Calculation Method
+
+In a standard Naive Bayes implementation, individual likelihoods are typically **multiplied** to find the joint probability. In this current logic, an additive approach is used to compare the relative weights of each feature.
+
+**Key Drivers Found:**
 
 * **Strongest Predictors:** "Hot" temperature and "Smelly" body odor are the strongest indicators for a **Yes** decision.
 * **Negative Drivers:** "Fresh" body odor and "Cold" weather are the most common reasons for a **No** decision.
